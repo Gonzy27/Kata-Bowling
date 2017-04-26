@@ -1,10 +1,16 @@
 package cl.ubiobio.testing;
 
-
 public class Bowling {
-int pins = 0;
-	public int roll(int pinsRoll){
+	int pins = 0;
+
+
+	public void roll(int pinsRoll) {
 		pins += pinsRoll;
-		return  pins;
+
+
+	}
+
+	public int score() {
+		return pins;
 	}
 }

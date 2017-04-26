@@ -32,5 +32,16 @@ public class TestBowling {
 
 	}
 
+	@Test
+	public void firstRollStrikeSecondRollThreeAndTrirdRollFiveShouldBeTwentySix() {
+		Bowling game = new Bowling();
+		game.roll(10);
+		game.roll(3);
+		game.roll(5);
+		for (int i = 0; i < 16; i++)
+			game.roll(0);
+		int result = game.score();
+		assertEquals(26, result);
+	}
 		
 }

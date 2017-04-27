@@ -2,11 +2,11 @@ package cl.ubiobio.testing;
 
 public class Bowling {
 	int pins = 0;
-	boolean primerRoll = true;
 	boolean strike = false;
 	boolean spare = false;
 	int previousRoll = 0;
-	int contStrike = 0;
+	int contStrike = -1;
+	int valueRoll = 0;
 
 	public void roll(char pinsRoll) {
 		if (pinsRoll == 'X') {
@@ -16,22 +16,22 @@ public class Bowling {
 			spare = true;
 			pins += (10 - previousRoll);
 		} else {
-			if (pinsRoll == '/')
-				System.out.println("asd");
-			pins += Character.getNumericValue(pinsRoll);
-			previousRoll = Character.getNumericValue(pinsRoll);
+			valueRoll = Character.getNumericValue(pinsRoll);
+			pins += valueRoll;
+			previousRoll = valueRoll;
 			if (strike == true) {
-				pins += Character.getNumericValue(pinsRoll);
+				pins += valueRoll;
 				contStrike += 1;
 			}
-			if (contStrike == 2) {
-				contStrike = 0;
-				strike = false;
-			}
-			if (spare == true){
-				pins += Character.getNumericValue(pinsRoll);
-				spare = false;
-			}
+		}
+		if (contStrike == 2) {
+			contStrike = 0;
+			strike = false;
+		}
+		if (spare == true) {
+			pins += valueRoll;
+			spare = false;
+
 		}
 	}
 
